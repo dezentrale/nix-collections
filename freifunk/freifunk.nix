@@ -13,7 +13,7 @@ with lib;
   ];
 
   # ISO image configuration
-  isoImage.isoName = "NixOS-freifunk_events-${config.system.nixos.label}-${pkgs.stdenv.system}.iso";
+  isoImage.isoName = "nixos-freifunk_events-${config.system.nixos.label}-${pkgs.stdenv.system}.iso";
   isoImage.volumeID = substring 0 11 "NIXOS_ISO";
   isoImage.makeEfiBootable = true;
   isoImage.makeUsbBootable = true;
@@ -31,6 +31,7 @@ with lib;
 
   # Kiosk user
   users.users.user = {
+    initialPassword = "freifunk-dezentrale";
     isNormalUser = true;
     description = "User";
     home = "/home/user";
@@ -51,7 +52,6 @@ with lib;
       Option  "DontVTSwitch"  "True"
     EndSection
   '';
-  services.xserver.synaptics.enable = true;
   services.xserver.displayManager.lightdm.enable = true;
   services.xserver.desktopManager.xterm.enable = false;
   services.xserver.displayManager.defaultSession = "none+i3";
@@ -71,6 +71,6 @@ with lib;
     i3status
     networkmanagerapplet
   ];
-  system.stateVersion = "23.05";
+  system.stateVersion = "23.11";
 }
 
