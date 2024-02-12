@@ -13,7 +13,7 @@ with lib;
   ];
 
   # ISO image configuration
-  isoImage.isoName = "NixOS-hardwareforfuture_events-${config.system.nixos.label}-${pkgs.stdenv.system}.iso";
+  isoImage.isoName = "nixos-hardwareforfuture_events-${config.system.nixos.label}-${pkgs.stdenv.system}.iso";
   isoImage.volumeID = substring 0 11 "NIXOS_ISO";
   isoImage.makeEfiBootable = true;
   isoImage.makeUsbBootable = true;
@@ -31,6 +31,7 @@ with lib;
 
   # Kiosk user
   users.users.user = {
+    initialPassword = "hw4f-dezentrale";
     isNormalUser = true;
     description = "User";
     home = "/home/user";
@@ -51,7 +52,6 @@ with lib;
       Option  "DontVTSwitch"  "True"
     EndSection
   '';
-  services.xserver.synaptics.enable = true;
   services.xserver.displayManager.lightdm.enable = true;
   services.xserver.desktopManager.xterm.enable = false;
   services.xserver.displayManager.defaultSession = "none+i3";
@@ -63,7 +63,7 @@ with lib;
     for_window [class="Firefox"] fullscreen
 
     exec --no-startup-id nm-applet
-    exec firefox --new-tab https://hardwareforfuture.de --kiosk
+    exec firefox --new-tab https://hw4f.de --kiosk
   '';
 
   environment.systemPackages = with pkgs; [
@@ -71,6 +71,6 @@ with lib;
     i3status
     networkmanagerapplet
   ];
-  system.stateVersion = "23.05";
+  system.stateVersion = "23.11";
 }
 
