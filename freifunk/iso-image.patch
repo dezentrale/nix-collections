@@ -24,7 +24,7 @@ diff -Nru a/iso-image.nix b/iso-image.nix
 +    cp -v ${pkgs.systemd}/lib/systemd/boot/efi/systemd-boot${targetArch}.efi $out/EFI/boot/loader.efi
      mkdir -p $out/loader/entries
  
-     echo "title NixOS Live CD" > $out/loader/entries/nixos-livecd.conf
+     echo "title Freifunk Leipzig" > $out/loader/entries/nixos-livecd.conf
 @@ -296,7 +308,7 @@
          config.system.build.toplevel.drvPath;
  
