@@ -14,7 +14,7 @@ with lib;
 
   # ISO image configuration
   isoImage.isoName = "nixos-freifunk_events-${config.system.nixos.label}-${pkgs.stdenv.system}.iso";
-  isoImage.volumeID = substring 0 11 "NIXOS_ISO";
+  isoImage.volumeID = substring 0 11 "NIXOS_FREIFUNK";
   isoImage.makeEfiBootable = true;
   isoImage.makeUsbBootable = true;
   isoImage.appendToMenuLabel = "";
