@@ -72,5 +72,10 @@ with lib;
     networkmanagerapplet
   ];
   system.stateVersion = "23.11";
+  systemd.targets.sleep.enable = false;
+  systemd.targets.suspend.enable = false;
+  systemd.targets.hibernate.enable = false;
+  systemd.targets.hybrid-sleep.enable = false;
+  powerManagement.enable = false;
 }
 
